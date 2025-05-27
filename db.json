@@ -1,9 +1,9 @@
 {
   "tasks": [
     {
-      "id": "2",
       "title": "Lavar ropa",
-      "completed": true
+      "id": "2",
+      "completed": false
     },
     {
       "id": "d2e6",
@@ -13,7 +13,7 @@
     {
       "id": "d201",
       "title": "Completar el PIA de Front-End",
-      "completed": false
+      "completed": true
     },
     {
       "id": "9850",
@@ -23,7 +23,7 @@
     {
       "id": "ec43",
       "title": "Pasar todas mis materias",
-      "completed": true
+      "completed": false
     },
     {
       "id": "6b15",
@@ -40,7 +40,19 @@
       "id": "c69e",
       "title": "Escribir en mi diario ",
       "date": "2025-05-26",
+      "completed": true
+    },
+    {
+      "id": "f844",
+      "title": "Pasar seminario de computación ",
+      "date": "2025-05-27",
       "completed": false
+    },
+    {
+      "id": "80ef",
+      "title": "+6666",
+      "date": "2025-01-27",
+      "completed": true
     }
   ]
 }
