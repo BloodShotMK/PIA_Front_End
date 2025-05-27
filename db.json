@@ -1,0 +1,46 @@
+{
+  "tasks": [
+    {
+      "id": "2",
+      "title": "Lavar ropa",
+      "completed": true
+    },
+    {
+      "id": "d2e6",
+      "title": "Pasear a los perros",
+      "completed": true
+    },
+    {
+      "id": "d201",
+      "title": "Completar el PIA de Front-End",
+      "completed": false
+    },
+    {
+      "id": "9850",
+      "title": "Estudiar para ingeniería de software",
+      "completed": true
+    },
+    {
+      "id": "ec43",
+      "title": "Pasar todas mis materias",
+      "completed": true
+    },
+    {
+      "id": "6b15",
+      "title": "9 practicas de Minería de datos",
+      "completed": true
+    },
+    {
+      "id": "aea9",
+      "title": "Finalizar el semestre ",
+      "date": "2025-05-31",
+      "completed": false
+    },
+    {
+      "id": "c69e",
+      "title": "Escribir en mi diario ",
+      "date": "2025-05-26",
+      "completed": false
+    }
+  ]
+}
