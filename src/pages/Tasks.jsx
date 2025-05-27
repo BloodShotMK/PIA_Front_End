@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 
 function Tasks() {
   const [tasks, setTasks] = useState([]);
@@ -10,54 +9,53 @@ function Tasks() {
   const [filterStatus, setFilterStatus] = useState('all');
   const [filterMonth, setFilterMonth] = useState('');
 
-  const API_URL = 'http://localhost:3000/tasks';
-
+  // Cargar tareas desde localStorage
   useEffect(() => {
-    axios.get(API_URL)
-      .then((res) => setTasks(res.data))
-      .catch((err) => console.error(err));
+    const storedTasks = localStorage.getItem('tasks');
+    if (storedTasks) {
+      setTasks(JSON.parse(storedTasks));
+    }
   }, []);
+
+  // Guardar tareas en localStorage cada vez que cambian
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }, [tasks]);
 
   const handleAdd = (e) => {
     e.preventDefault();
     if (!newTask.trim() || !newDate) return;
 
-    axios.post(API_URL, {
+    const newTaskObj = {
+      id: Date.now(),
       title: newTask,
       date: newDate,
       completed: false
-    })
-      .then((res) => setTasks([...tasks, res.data]))
-      .catch((err) => console.error(err));
+    };
 
+    setTasks([...tasks, newTaskObj]);
     setNewTask('');
     setNewDate('');
   };
 
   const handleDelete = (id) => {
-    axios.delete(`${API_URL}/${id}`)
-      .then(() => setTasks(tasks.filter(task => task.id !== id)))
-      .catch((err) => console.error(err));
+    setTasks(tasks.filter(task => task.id !== id));
   };
 
   const handleUpdate = (id) => {
     if (!editValue.trim()) return;
 
-    axios.put(`${API_URL}/${id}`, { title: editValue })
-      .then((res) => {
-        setTasks(tasks.map(task => task.id === id ? res.data : task));
-        setEditingTaskId(null);
-        setEditValue('');
-      })
-      .catch((err) => console.error(err));
+    setTasks(tasks.map(task =>
+      task.id === id ? { ...task, title: editValue } : task
+    ));
+    setEditingTaskId(null);
+    setEditValue('');
   };
 
   const toggleComplete = (id, currentStatus) => {
-    axios.patch(`${API_URL}/${id}`, { completed: !currentStatus })
-      .then((res) => {
-        setTasks(tasks.map(task => task.id === id ? res.data : task));
-      })
-      .catch((err) => console.error(err));
+    setTasks(tasks.map(task =>
+      task.id === id ? { ...task, completed: !currentStatus } : task
+    ));
   };
 
   const filteredTasks = tasks.filter(task => {
